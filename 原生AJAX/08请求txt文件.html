@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>请求TXT文件</title>
+</head>
+<body>
+  <button id="button1">请求TXT文件</button>
+  <script>
+    document.getElementById('button1',addEventListener('click',loadText));
+    function loadText(){
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET','./json/data.txt',true);
+      xhr.onload = function(){
+        console.log(this.responseText);
+      }
+      xhr.send();
+    }
+  </script>
+</body>
+</html>

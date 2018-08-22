@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ajax-get请求</title>
+</head>
+
+<body>
+    <script>
+        var ajax = new XMLHttpRequest();
+        ajax.onreadystatechange = function() {
+            if (ajax.readyState == 4 && ajax.status == 200) {
+                console.log("请求成功！");
+                console.log(ajax.responseText);
+            }
+        }
+        ajax.open("get", "./json/demo_get.php", true);
+        ajax.send();
+    </script>
+</body>
+
+</html>

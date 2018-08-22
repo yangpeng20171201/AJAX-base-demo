@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>原生Ajax的使用</title>
+</head>
+
+<body>
+  <script>
+    // 1、创建对象
+    var xpp;
+    if (window.XMLHttpRequest) {
+      xmlhttp = new XMLHttpRequest();
+    } else {
+      xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    
+    //   2、设置回调函数
+    // 浏览器会监听异步的状态，只要状态发生变化就会执行对应的函数 
+    // 异步状态： 
+    // 0 XMLHttpRequest对象没有完成初始化即：刚刚创建。 
+    // 1 XMLHttpRequest对象开始发送请求调用了open方法，但还没有调用send方法。请求还没有发出 
+    // 2 XMLHttpRequest对象的请求发送完成send方法已经调用，数据已经提交到服务器，但没有任何响应 
+    // 3 XMLHttpRequest对象开始读取响应，还没有结束收到了所有的响应消息头，但正文还没有完全收到 
+    // 4 XMLHttpRequest对象读取响应结束一切都收到了
+
+    xpp.onreadystatechange = function () {
+      //对服务器响应的数据进行处理
+      console.log(xpp.readyState);
+      //验证当前的ajax对象的状态和http协议的状态响应码
+      if (xpp.readyState == 4 && xpp.status == 200) {
+        console.log(xpp.responseText);
+      }
+    };
+    // 3、打开连接
+
+    // 需要标记当前的请求方式、请求资源路径、是否异步 
+    // 如果请求方式为get那么传递参数跟在url进行传输
+
+    xpp.open("get", "./json/data.json", true);
+    1
+    // 4、设置消息头
+
+    //设置请求消息头
+    xpp.setRequestHeader("Content-type",
+      "application/x-www-form-urlencoded");
+    // 5、发送请求
+    // 如果请求方式为post的话，可以传递参数
+
+    xpp.send();
+  </script>
+</body>
+
+</html>
